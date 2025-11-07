@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-//import { Sidebar } from '../sidebar/sidebar';
+import { Sidebar } from '../sidebar/sidebar';
 import { CheckIcon } from '../../icons/check-icon';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
-  imports: [CommonModule, FormsModule, CheckIcon],
+  imports: [CommonModule, FormsModule, CheckIcon, Sidebar],
   templateUrl: './signup.html',
   styleUrl: './signup.css',
 })

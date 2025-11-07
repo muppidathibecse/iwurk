@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Sidebar } from '../sidebar/sidebar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { Sidebar } from '../sidebar/sidebar';
   styleUrl: './login.css',
 })
 export class Login {
+  constructor(private router: Router) {}
   showPassword = false;
   submitted = false;
 
@@ -25,5 +27,8 @@ export class Login {
   Login() {
     this.submitted = true;
     console.log(this.user);
+  }
+  GoToSignUP() {
+    this.router.navigate(['/signup']);
   }
 }

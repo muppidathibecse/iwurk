@@ -1,5 +1,7 @@
 <main class="flex h-screen w-screen overflow-hidden">
-  <div class="relative bg-sidebar flex-2 flex flex-col justify-start"></div>
+  <div class="relative bg-sidebar flex-2 flex flex-col justify-start">
+    <app-sidebar></app-sidebar>
+  </div>
 
   <div class="flex-3 bg-white flex justify-center items-center">
     <div class="w-133 h-176 flex flex-col justify-start items-center">
@@ -7,9 +9,7 @@
         <h1 class="text-[32px] font-semibold font-inter leading-10 text-black">
           Hi, Welcome to iwurk!
         </h1>
-        <p class="text-[14px] leading-6 text-[#6B7280]">
-          Create an account and enjoy starting iwurk
-        </p>
+        <p class="text-[14px] leading-6 text-gray-3">Create an account and enjoy starting iwurk</p>
       </div>
       <div
         class="h-10 w-full flex justify-center items-center border rounded-lg border-gray gap-4 mt-7 cursor-pointer"
@@ -90,12 +90,12 @@
         <div class="h-full w-[170px] flex flex-col gap-2.5">
           <div class="flex h-[18px] items-center">
             <app-check-icon
-              [ngClass]="lowercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              [ngClass]="lowercaseValid ? 'text-green-600' : 'text-gray-4'"
               class="w-[18px]"
             ></app-check-icon>
 
             <p
-              [ngClass]="lowercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              [ngClass]="lowercaseValid ? 'text-green-600' : 'text-gray-4'"
               class="text-[12px] ml-2"
             >
               One lowercase character
@@ -104,12 +104,12 @@
 
           <div class="flex h-[18px] w-[170px] items-center">
             <app-check-icon
-              [ngClass]="uppercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              [ngClass]="uppercaseValid ? 'text-green-600' : 'text-gray-4'"
               class="w-[18px]"
             ></app-check-icon>
 
             <p
-              [ngClass]="uppercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              [ngClass]="uppercaseValid ? 'text-green-600' : 'text-gray-4'"
               class="text-[12px] ml-2"
             >
               One uppercase character
@@ -119,22 +119,22 @@
         <div class="h-full w-[170px] flex flex-col gap-2.5">
           <div class="flex h-[18px] w-[170px] items-center">
             <app-check-icon
-              [ngClass]="len ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              [ngClass]="len ? 'text-green-600' : 'text-gray-4'"
               class="w-[18px]"
             ></app-check-icon>
 
-            <p [ngClass]="len ? 'text-green-600' : 'text-[#0A0A0C57]'" class="text-[12px] ml-2">
+            <p [ngClass]="len ? 'text-green-600' : 'text-gray-4'" class="text-[12px] ml-2">
               8 characters minimum
             </p>
           </div>
           <div class="flex h-[18px] w-[170px] items-center">
             <app-check-icon
-              [ngClass]="specialCharValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              [ngClass]="specialCharValid ? 'text-green-600' : 'text-gray-4'"
               class="w-[18px]"
             ></app-check-icon>
 
             <p
-              [ngClass]="specialCharValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              [ngClass]="specialCharValid ? 'text-green-600' : 'text-gray-4'"
               class="text-[12px] ml-2"
             >
               One special character
