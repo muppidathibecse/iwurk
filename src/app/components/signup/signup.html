@@ -1,0 +1,174 @@
+<main class="flex h-screen w-screen overflow-hidden">
+  <div class="relative bg-sidebar flex-2 flex flex-col justify-start"></div>
+
+  <div class="flex-3 bg-white flex justify-center items-center">
+    <div class="w-133 h-176 flex flex-col justify-start items-center">
+      <div class="w-84 h-20 flex justify-between items-center flex-col">
+        <h1 class="text-[32px] font-semibold font-inter leading-10 text-black">
+          Hi, Welcome to iwurk!
+        </h1>
+        <p class="text-[14px] leading-6 text-[#6B7280]">
+          Create an account and enjoy starting iwurk
+        </p>
+      </div>
+      <div
+        class="h-10 w-full flex justify-center items-center border rounded-lg border-gray gap-4 mt-7 cursor-pointer"
+      >
+        <img src="/assets/google.png" class="h-6 w-6" alt="Dashboard" />
+        <p class="text-[16px] leading-6 font-medium text-center">Sign up with Google</p>
+      </div>
+      <div class="h-5 w-full flex justify-between items-center mt-6">
+        <hr class="w-[183px] border border-gray-1" />
+        <p class="text-[14px] leading-5 text-black-1">or Sign up with Email</p>
+        <hr class="w-[183px] border border-gray-1" />
+      </div>
+      <div class="h-[70px] w-full flex flex-col justify-between mt-6">
+        <p class="text-[14px] leading-5 font-inter">Name</p>
+        <div
+          [ngClass]="{
+            'border-red': submitted && UserName == false
+          }"
+          class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+        >
+          <img src="/assets/user.png" class="h-6 w-6 ml-4" alt="Dashboard" />
+          <input
+            placeholder="Enter your name"
+            [(ngModel)]="user.name"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+          />
+        </div>
+      </div>
+      <div class="h-[70px] w-full flex flex-col justify-between mt-6">
+        <p class="text-[14px] leading-5 font-inter">Email address</p>
+        <div
+          [ngClass]="{
+            'border-red': submitted && UserEmail == false
+          }"
+          class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+        >
+          <img src="/assets/emailbox.png" class="h-6 w-6 ml-4" alt="Dashboard" />
+          <input
+            placeholder="Enter your email"
+            [(ngModel)]="user.email"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+          />
+        </div>
+      </div>
+      <div class="h-[70px] w-full flex flex-col justify-between mt-6">
+        <p class="text-[14px] leading-5 font-inter">Password</p>
+
+        <div
+          [ngClass]="{
+            'border-red':
+              submitted && (!len || !lowercaseValid || !uppercaseValid || !specialCharValid),
+            'border-gray':
+              !submitted || (len && lowercaseValid && uppercaseValid && specialCharValid)
+          }"
+          class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+        >
+          <img src="/assets/lock.png" class="h-6 w-6 ml-4" alt="Lock" />
+
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="user.password"
+            (input)="logPassword()"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+            placeholder="Enter your password"
+          />
+
+          <div class="w-full flex justify-end">
+            <img
+              src="{{ showPassword ? '/assets/eye-slash.png' : '/assets/eye.png' }}"
+              class="h-6 w-6 mr-4 cursor-pointer"
+              alt="Toggle Password"
+              (click)="toggle()"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="h-[46px] w-full flex justify-start mt-6">
+        <div class="h-full w-[170px] flex flex-col gap-2.5">
+          <div class="flex h-[18px] items-center">
+            <app-check-icon
+              [ngClass]="lowercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              class="w-[18px]"
+            ></app-check-icon>
+
+            <p
+              [ngClass]="lowercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              class="text-[12px] ml-2"
+            >
+              One lowercase character
+            </p>
+          </div>
+
+          <div class="flex h-[18px] w-[170px] items-center">
+            <app-check-icon
+              [ngClass]="uppercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              class="w-[18px]"
+            ></app-check-icon>
+
+            <p
+              [ngClass]="uppercaseValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              class="text-[12px] ml-2"
+            >
+              One uppercase character
+            </p>
+          </div>
+        </div>
+        <div class="h-full w-[170px] flex flex-col gap-2.5">
+          <div class="flex h-[18px] w-[170px] items-center">
+            <app-check-icon
+              [ngClass]="len ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              class="w-[18px]"
+            ></app-check-icon>
+
+            <p [ngClass]="len ? 'text-green-600' : 'text-[#0A0A0C57]'" class="text-[12px] ml-2">
+              8 characters minimum
+            </p>
+          </div>
+          <div class="flex h-[18px] w-[170px] items-center">
+            <app-check-icon
+              [ngClass]="specialCharValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              class="w-[18px]"
+            ></app-check-icon>
+
+            <p
+              [ngClass]="specialCharValid ? 'text-green-600' : 'text-[#0A0A0C57]'"
+              class="text-[12px] ml-2"
+            >
+              One special character
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="h-5 w-full flex justify-between mt-6 mx-[2.5px]">
+        <label class="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            [(ngModel)]="user.agree"
+            [ngClass]="{
+              'border-red': submitted && !user.agree,
+              'border-gray': !(submitted && !user.agree)
+            }"
+            class="w-4 h-4 border rounded-sm cursor-pointer accent-primary"
+          />
+
+          <span class="text-[14px] font-inter leading-5"
+            >I agree to the <span class="text-primary">Terms & Conditions</span>
+          </span>
+        </label>
+      </div>
+      <button
+        (click)="Signup()"
+        class="h-11 w-full rounded-xl cursor-pointer bg-primary shadow shadow-gray-2 text-[16px] mt-6 font-bold text-white"
+      >
+        Sign Up
+      </button>
+      <p class="font-inter mt-6 text-[14px] text-center">
+        Already have an Account?
+        <span (click)="GoToLogin()" class="text-primary cursor-pointer">Login</span>
+      </p>
+    </div>
+  </div>
+</main>
