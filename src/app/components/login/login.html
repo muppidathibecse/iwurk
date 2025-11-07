@@ -1,0 +1,94 @@
+<main class="flex h-screen w-screen overflow-hidden">
+  <div class="relative bg-sidebar flex-2 flex flex-col justify-start">
+   <app-sidebar></app-sidebar>
+  </div>
+
+  <div class="flex-3 bg-white flex justify-center items-center">
+    <div class="h-[552px] w-[533px] flex justify-start flex-col">
+      <div class="h-20 w-full flex flex-col justify-between items-center">
+        <p class="text-[32px] font-semibold font-inter leading-10">Hi, Welcome back!</p>
+        <p class="text-[14px] text-gray-2">Login to you account to enjoy</p>
+      </div>
+      <div
+        class="h-[42px] w-full flex justify-center items-center border rounded-lg border-gray gap-4 mt-7"
+      >
+        <img src="/assets/google.png" class="h-6 w-6" alt="Dashboard" />
+        <p class="text-[16px] leading-6 font-medium text-center">Sign up with Google</p>
+      </div>
+      <div class="h-5 w-full flex justify-between items-center mt-6">
+        <hr class="w-[183px] border border-gray-1" />
+        <p class="text-[14px] leading-5 text-black-1">or Sign up with Email</p>
+        <hr class="w-[183px] border border-gray-1" />
+      </div>
+      <div class="h-[70px] w-full flex flex-col justify-between mt-6">
+        <p class="text-[14px] leading-5 font-inter">Email address</p>
+        <div
+          [ngClass]="{
+            'border-red': submitted && user.email === ''
+          }"
+          class="h-[42px] border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+        >
+          <img src="/assets/emailbox.png" class="h-6 w-6 ml-4" alt="Dashboard" />
+          <input
+            placeholder="Enter your password"
+            [(ngModel)]="user.email"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+          />
+        </div>
+      </div>
+      <div class="h-[70px] w-full flex flex-col justify-between mt-6">
+        <p class="text-[14px] leading-5 font-inter">Password</p>
+
+        <div
+          [ngClass]="{
+            'border-red': submitted && user.password === ''
+          }"
+          class="h-[42px] border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+        >
+          <img src="/assets/lock.png" class="h-6 w-6 ml-4" alt="Lock" />
+
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="user.password"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+            placeholder="Enter your password"
+          />
+
+          <div class="w-full flex justify-end">
+            <img
+              src="{{ showPassword ? '/assets/eye-slash.png' : '/assets/eye.png' }}"
+              class="h-6 w-6 mr-4 cursor-pointer"
+              alt="Toggle Password"
+              (click)="toggle()"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="h-5 w-full flex justify-between mt-6 mx-[2.5px]">
+        <label class="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            [(ngModel)]="user.remember"
+            [ngClass]="{
+              'border-red': submitted && !user.remember,
+              'border-gray': !(submitted && !user.remember)
+            }"
+            class="w-4 h-4 border rounded-sm cursor-pointer accent-primary"
+          />
+
+          <span class="text-[14px] font-inter leading-5">Remember me</span>
+        </label>
+        <p class="text-primary leading-5 text-[14px] cursor-pointer">Forgot your password?</p>
+      </div>
+      <button
+        (click)="Login()"
+        class="h-11 rounded-xl cursor-pointer bg-primary shadow shadow-gray-2 text-[16px] mt-6 font-bold text-white"
+      >
+        Log In
+      </button>
+      <p class="font-inter mt-6 text-[14px] text-center">
+        Not registered yet? <span class="text-primary cursor-pointer">Create an Account</span>
+      </p>
+    </div>
+  </div>
+</main>
