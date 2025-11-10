@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   imports: [CommonModule, FormsModule, Sidebar],
   templateUrl: './login.html',
-  styleUrl: './login.css',
 })
 export class Login {
   constructor(private router: Router) {}
@@ -24,11 +23,15 @@ export class Login {
   toggle() {
     this.showPassword = !this.showPassword;
   }
-  Login() {
+  login() {
     this.submitted = true;
     console.log(this.user);
   }
-  GoToSignUP() {
+  goToSignUP() {
     this.router.navigate(['/signup']);
+  }
+
+  goToFP(){
+    this.router.navigate(['/forgotpassword']);
   }
 }

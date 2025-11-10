@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
-  imports: [CommonModule, FormsModule, CheckIcon, Sidebar],
+  imports: [CommonModule, FormsModule, CheckIcon],
   templateUrl: './signup.html',
   styleUrl: './signup.css',
 })
@@ -25,28 +25,28 @@ export class Signup {
     password: '',
     agree: false,
   };
-  UserName = false;
-  UserEmail = false;
+  userName = false;
+  userEmail = false;
 
   toggle() {
     this.showPassword = !this.showPassword;
   }
 
-  Signup() {
+  signup() {
     this.submitted = true;
-    this.UserName = /[a-zA-Z]/.test(this.user.name);
-    this.UserEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.user.email);
+    this.userName = /[a-zA-Z]/.test(this.user.name);
+    this.userEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.user.email);
 
     console.log(this.user);
-    console.log(this.UserEmail);
+    console.log(this.userEmail);
 
     if (
       this.len &&
       this.lowercaseValid &&
       this.uppercaseValid &&
       this.specialCharValid &&
-      this.UserName &&
-      this.UserEmail
+      this.userName &&
+      this.userEmail
     ) {
       alert('All are Filled');
     }
@@ -60,7 +60,7 @@ export class Signup {
     this.specialCharValid = /[!@#$%^&*(),.?":{}|<>]/.test(this.user.password);
   }
 
-  GoToLogin() {
+  goToLogin() {
     this.router.navigate(['/login']);
   }
 }

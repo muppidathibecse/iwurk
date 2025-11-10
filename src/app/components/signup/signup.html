@@ -1,10 +1,10 @@
 <main class="flex h-screen w-screen overflow-hidden">
   <div class="relative bg-sidebar flex-2 flex flex-col justify-start">
-    <app-sidebar></app-sidebar>
+    <!-- <app-sidebar></app-sidebar> -->
   </div>
 
   <div class="flex-3 bg-white flex justify-center items-center">
-    <div class="w-133 h-176 flex flex-col justify-start items-center">
+    <div class="w-133 h-176 flex flex-col justify-start items-center 2xl:w-[600px]">
       <div class="w-84 h-20 flex justify-between items-center flex-col">
         <h1 class="text-[32px] font-semibold font-inter leading-10 text-black">
           Hi, Welcome to iwurk!
@@ -26,7 +26,7 @@
         <p class="text-[14px] leading-5 font-inter">Name</p>
         <div
           [ngClass]="{
-            'border-red': submitted && UserName == false
+            'border-red': submitted && userName == false
           }"
           class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
         >
@@ -34,7 +34,7 @@
           <input
             placeholder="Enter your name"
             [(ngModel)]="user.name"
-            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray-3"
           />
         </div>
       </div>
@@ -42,7 +42,7 @@
         <p class="text-[14px] leading-5 font-inter">Email address</p>
         <div
           [ngClass]="{
-            'border-red': submitted && UserEmail == false
+            'border-red': submitted && userEmail == false
           }"
           class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
         >
@@ -50,7 +50,7 @@
           <input
             placeholder="Enter your email"
             [(ngModel)]="user.email"
-            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray-3"
           />
         </div>
       </div>
@@ -72,7 +72,7 @@
             [type]="showPassword ? 'text' : 'password'"
             [(ngModel)]="user.password"
             (input)="logPassword()"
-            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray"
+            class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray-3"
             placeholder="Enter your password"
           />
 
@@ -155,19 +155,19 @@
           />
 
           <span class="text-[14px] font-inter leading-5"
-            >I agree to the <span class="text-primary">Terms & Conditions</span>
+            >I agree to the <span class="text-primary cursor-pointer">Terms & Conditions</span>
           </span>
         </label>
       </div>
       <button
-        (click)="Signup()"
+        (click)="signup()"
         class="h-11 w-full rounded-xl cursor-pointer bg-primary shadow shadow-gray-2 text-[16px] mt-6 font-bold text-white"
       >
         Sign Up
       </button>
       <p class="font-inter mt-6 text-[14px] text-center">
         Already have an Account?
-        <span (click)="GoToLogin()" class="text-primary cursor-pointer">Login</span>
+        <span (click)="goToLogin()" class="text-primary cursor-pointer">Login</span>
       </p>
     </div>
   </div>
