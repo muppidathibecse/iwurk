@@ -25,10 +25,14 @@
           <p class="text-[14px] leading-5 font-inter">Company Name</p>
           <div
             class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+            [ngClass]="{
+              'border-red': submitted && companyName === false
+            }"
           >
             <img src="/assets/user.png" class="h-6 w-6 ml-4" alt="Dashboard" />
             <input
               placeholder="Company Name"
+              [(ngModel)]="organization.companyName"
               class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray-3"
             />
           </div>
@@ -38,10 +42,14 @@
             <p class="text-[14px] leading-5 font-inter">Industry</p>
             <div
               class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+              [ngClass]="{
+                'border-red': submitted && industryName === false
+              }"
             >
               <img src="/assets/emailbox.png" class="h-6 w-6 ml-4" alt="Dashboard" />
               <input
                 placeholder="Industry Name"
+                [(ngModel)]="organization.industryName"
                 class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray-3"
               />
             </div>
@@ -50,10 +58,14 @@
             <p class="text-[14px] leading-5 font-inter">Company Website</p>
             <div
               class="h-10 border border-gray rounded-lg flex items-center focus-within:border-primary focus-within:bg-primary-0 transition-all"
+              [ngClass]="{
+                'border-red': submitted && companyWebsite === false
+              }"
             >
               <img src="/assets/lock.png" class="h-6 w-6 ml-4" alt="Dashboard" />
               <input
                 placeholder="Company Website"
+                [(ngModel)]="organization.companyWebsite"
                 class="ml-2 text-[14px] leading-5 outline-none bg-transparent w-full placeholder:text-gray-3"
               />
             </div>
@@ -63,33 +75,67 @@
           <p class="text-[14px] leading-5 font-inter">Company Description</p>
           <div
             class="h-20 border border-gray rounded-lg flex justify-start items-start focus-within:border-primary focus-within:bg-primary-0 transition-all"
+            [ngClass]="{
+              'border-red': submitted && description === false
+            }"
           >
             <div class="h-full">
               <img src="/assets/lock.png" class="h-6 w-6 mt-4 ml-4" alt="Dashboard" />
             </div>
             <input
               placeholder="Description"
+              [(ngModel)]="organization.companyDescription"
               class="w-full pt-[17px] ml-2 text-[14px] leading-5 bg-transparent outline-none placeholder:text-gray-3"
             />
           </div>
         </div>
-        <div class="h-[157px] w-full flex flex-col justify-between mt-6 cursor-pointer">
+        <input
+          #fileInput
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          class="hidden"
+        />
+        <div
+          (click)="triggerFileInput(fileInput)"
+          class="h-[157px] w-full flex flex-col justify-between mt-6 cursor-pointer"
+        >
           <p class="text-[14px] leading-5 font-inter">Company Logo</p>
-          <div class="h-[129px] w-full border border-gray rounded-lg p-[17px]">
-            <div class="flex flex-col justify-center items-center">
-              <img src="/assets/uploadimage.png" class="h-12 w-12" alt="Dashboard" />
-
-              <p class="text-gray-secondary text-[12px] text-center mt-3">
-                UPLOAD IMAGE
-              </p>
-              <p class="text-gray-secondary text-[12px] text-center mt-[5px]">
-                Please click the upload
-              </p>
+          <ng-template #uploadPlaceholder>
+            <div
+              [ngClass]="{
+                'border-red': submitted
+              }"
+              class="h-[129px] w-full border border-gray rounded-lg p-[17px]"
+            >
+              <div class="flex flex-col justify-center items-center h-full w-full">
+                <img src="/assets/uploadimage.png" class="h-12 w-12" alt="Upload" />
+                <p class="text-gray-500 text-[12px] text-center mt-3">Drag & Drop or Browse</p>
+                <p class="text-gray-400 text-[12px] text-center mt-[5px]">
+                  Recommended: 200x200px, max 2MB
+                </p>
+              </div>
             </div>
-          </div>
+          </ng-template>
+          <ng-container *ngIf="imageUrl; else uploadPlaceholder">
+            <div class="flex justify-start items-start h-[126px] w-full relative">
+              <img
+                [src]="imageUrl"
+                alt="Uploaded"
+                class="h-[126px] w-[120px] object-cover rounded-[22px] border border-[#F0F0F0]"
+              />
+              <img
+                src="assets/cancel.png"
+                alt="Uploaded"
+                (click)="removeImage($event, fileInput)"
+                class="h-6 w-6 object-cover rounded-[22px] absolute left-[125px] -top-2"
+              />
+            </div>
+          </ng-container>
         </div>
       </div>
-       <button
+      <button
+        (click)="submit()"
         class="font-bold h-11 text-[16px] text-white w-full rounded-xl bg-primary mt-[30px] cursor-pointer"
       >
         Submit
