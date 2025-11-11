@@ -3,52 +3,42 @@
     <!-- <app-sidebar></app-sidebar> -->
   </div>
 
-  <div class="flex-3 bg-white flex justify-center items-center">
+  <div class="flex-3 bg-[#F4F5FA] flex justify-center items-center">
     <div class="w-[586px] h-[446px] flex flex-col justify-start items-center 2xl:w-[600px]">
       <h1 class="text-black font-semibold text-[32px]">Choose Module</h1>
       <p class="text-gray-3 text-[14px] mt-4">Create an account and enjoy starting iwurk</p>
       <div class="h-[h-263px] w-[554px] mt-[30px] flex gap-[30px]">
         <div
-          (click)="Select('IT')"
-          class="group h-[263px] w-[263px] rounded-xl border hover:border-primary bg-white-3 flex flex-col justify-center items-center cursor-pointer"
+          *ngFor="let module of modules"
+          (click)="Select(module.name)"
+          class="group bg-[#FBFBFB] h-[263px] w-[263px] rounded-xl bg-white-3 flex flex-col justify-center items-center cursor-pointer transition-all duration-200"
           [ngClass]="{
-            'border-primary': selected === 'IT'
+            'border border-primary': selected === module.name,
+            'border-transparent': selected !== module.name
           }"
         >
           <img
-            src="/assets/blackitmodule.png"
-            alt="Dashboard"
+            [src]="module.blackImgSrc"
+            alt="Onsite Module"
             class="h-[174px] w-[205px] block group-hover:hidden"
+            *ngIf="selected !== module.name"
           />
 
           <img
-            src="/assets/coloritmodule.png"
-            alt="Dashboard Hover"
+            [src]="module.colorImgSrc"
+            alt="Onsite Module Hover"
             class="h-[174px] w-[205px] hidden group-hover:block"
-          />
-
-          <p class="text-black font-semibold text-[20px] mt-2">IT Module</p>
-        </div>
-        <div
-          (click)="Select('Onsite')"
-          class="group h-[263px] w-[263px] rounded-xl border hover:border hover:border-primary bg-white-3 flex flex-col justify-center items-center cursor-pointer"
-          [ngClass]="{
-            'border-primary': selected === 'Onsite'
-          }"
-        >
-          <img
-            src="/assets/blackitmodule.png"
-            alt="Dashboard"
-            class="h-[174px] w-[205px] block group-hover:hidden"
+            *ngIf="selected !== module.name"
           />
 
           <img
-            src="/assets/coloritmodule.png"
-            alt="Dashboard Hover"
-            class="h-[174px] w-[205px] hidden group-hover:block"
+            [src]="module.colorImgSrc"
+            alt="Onsite Module Selected"
+            class="h-[174px] w-[205px]"
+            *ngIf="selected === module.name"
           />
 
-          <p class="text-black font-semibold text-[20px] mt-2">Onsite Module</p>
+          <p class="text-black font-semibold text-[20px] mt-2">{{ module.name }}</p>
         </div>
       </div>
       <button

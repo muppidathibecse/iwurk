@@ -1,20 +1,42 @@
-<main>
-  <div class="w-full flex-col justify-center items-center flex gap-6">
-    <div class="h-20 w-full flex flex-col justify-between items-center">
-      <h1 class="text-[32px] font-intrer font-semibold leading-10">Email Not Verified</h1>
-      <p class="text-[16px] leading-6 text-center w-[383px]">
-        Your email address was successfully verified
-      </p>
-    </div>
-    <img src="/assets/emailnotverified.png" class="h-[180px] w-[180px]" alt="Dashboard" />
-    <p class="text-black text-[16px] text-center">
-      Token has expired or verify token is already used
-    </p>
+<!-- hidden file input -->
+<input
+  #fileInput
+  type="file"
+  accept="image/*"
+  (change)="onFileSelected($event)"
+  class="hidden"
+/>
 
-    <button
-      class="w-70 h-11 rounded-xl cursor-pointer bg-red-1 text-white font-bold text-[16px] shadow-[0_8px_16px_0_rgba(143,149,178,0.15)]"
-    >
-      Try Again
-    </button>
+<!-- clickable upload box -->
+<div
+  class="h-[157px] w-full flex flex-col justify-between mt-6 cursor-pointer"
+  (click)="triggerFileInput(fileInput)"
+>
+  <p class="text-[14px] leading-5 font-inter">Company Logo</p>
+
+  <div class="h-[129px] w-full border border-gray rounded-lg p-[17px] flex flex-col justify-center items-center">
+
+    <!-- show preview if image uploaded -->
+    <ng-container *ngIf="imageUrl; else uploadPlaceholder">
+      <img
+        [src]="imageUrl"
+        alt="Uploaded"
+        class="h-12 w-12 object-cover rounded-full border"
+      />
+      <p class="text-[12px] text-center mt-3 text-gray-600">
+        {{ selectedFileName }}
+      </p>
+    </ng-container>
+
+    <!-- placeholder before upload -->
+    <ng-template #uploadPlaceholder>
+      <img src="/assets/uploadimage.png" class="h-12 w-12" alt="Upload" />
+      <p class="text-gray-500 text-[12px] text-center mt-3">
+        UPLOAD IMAGE
+      </p>
+      <p class="text-gray-400 text-[12px] text-center mt-[5px]">
+        Please click to upload
+      </p>
+    </ng-template>
   </div>
-</main>
+</div>
