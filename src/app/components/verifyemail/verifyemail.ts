@@ -5,7 +5,7 @@ import { Notverified } from '../notverified/notverified';
 @Component({
   selector: 'app-verifyemail',
   standalone: true,
-  imports: [Verified, Notverified],
+  imports: [Notverified],
   templateUrl: './verifyemail.html',
   styleUrl: './verifyemail.css',
 })
