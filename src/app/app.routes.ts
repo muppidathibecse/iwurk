@@ -7,6 +7,8 @@ import { Resetpassword } from './components/resetpassword/resetpassword';
 import { Verifyemail } from './components/verifyemail/verifyemail';
 import { Module } from './components/module/module';
 import { Accountsetup } from './components/accountsetup/accountsetup';
+import { Choosemodule } from './components/choosemodule/choosemodule';
+import { Admindashboard } from './components/admin/admindashboard/admindashboard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,4 +19,6 @@ export const routes: Routes = [
   { path: 'verify', component: Verifyemail },
   { path: 'module', component: Module },
   { path: 'accountsetup', component: Accountsetup },
+  { path: 'choosemodule', component: Choosemodule },
+  {path:'admindashboard',component:Admindashboard}
 ];

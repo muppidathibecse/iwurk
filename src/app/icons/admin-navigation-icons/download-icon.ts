@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-download-icon',
+  standalone: true,
+  template: `
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M15.2096 7.5C16.9244 7.56133 18.3804 8.84744 18.3336 10.5703C18.3226 10.9711 18.1674 11.4665 17.8568 12.4574C17.1095 14.842 15.8535 16.912 13.0398 17.4087C12.5226 17.5 11.9406 17.5 10.7766 17.5H9.22605C8.06205 17.5 7.48005 17.5 6.96284 17.4087C4.14913 16.912 2.89312 14.842 2.14577 12.4574C1.83523 11.4665 1.67996 10.9711 1.66907 10.5703C1.62223 8.84744 3.07822 7.56133 4.79298 7.5"
+        stroke="#6B7280"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+      <path
+        d="M10.0013 11.6667V2.5M10.0013 11.6667C9.4178 11.6667 8.32758 10.0048 7.91797 9.58333M10.0013 11.6667C10.5848 11.6667 11.6751 10.0048 12.0846 9.58333"
+        stroke="#6B7280"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  `,
+})
+export class downloadIcon {}

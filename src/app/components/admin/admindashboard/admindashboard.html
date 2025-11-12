@@ -1,0 +1,59 @@
+<main class="flex h-screen w-screen overflow-hidden">
+  <div class="bg-sidebar flex-1">
+    <app-adminsidebar></app-adminsidebar>
+  </div>
+
+  <div class="flex-3 bg-[#F4F5FA] flex justify-center flex-col">
+    <div class="h-[70px] w-full flex items-center border-b border-b-[#EFEDED]">
+      <div class="h-[50px] w-[789px] flex items-center ml-4">
+        <app-menu-icon></app-menu-icon>
+        <div
+          class="w-[337px] h-[38px] flex justify-start items-center ml-6 border border-[#F0F0F0] rounded-xl"
+        >
+          <app-search-icon class="ml-3"></app-search-icon>
+          <input
+            type="text"
+            placeholder="Search"
+            class="outline-none focus:outline-none focus:ring-0 ml-4 text-[14px] leading-[100%] placeholder-[#8B8C93] font-inter font-normal"
+          />
+        </div>
+      </div>
+      <div class="w-[323px] h-[50px] flex items-center justify-center gap-6">
+        <div class="h-[94px] flex justify-center items-center gap-6">
+          <app-notification-icon></app-notification-icon>
+          <app-fullscreen-icon></app-fullscreen-icon>
+        </div>
+        <div
+          class="h-full w-[174px] flex justify-center items-center gap-[10px] border-0.5 border-[#F0F0F0] rounded-[12px]"
+        >
+          <img src="logo/companylogo.png" alt="" class="h-[40px] w-[40px]" />
+          <button class="flex items-center justify-center text-[16px] text-black cursor-pointer">
+            Soft Suave
+            <app-down-arrow-icon class="ml-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="w-[1112px] h-full ml-2">
+      <div class="h-[183px] flex flex-col justify-between">
+        <div class="h-[55px] flex flex-col justify-between">
+          <h1 class="text-[24px] text-[#0C213A] font-bold">Welcome back, Soft Suave!</h1>
+          <p class="text-[16px] text-[#6B7280]">Here's your performance summary for today.</p>
+        </div>
+        <div class="h-[105px] flex justify-between">
+          <div
+            class="w-[350px] h-full rounded-xl bg-linear-to-r from-[#8B5CF6] to-[#6366F1] flex justify-between items-center px-[20px]"
+          >
+            <div class="h-[59px] w-[106px]">
+              <p class="text-[14px] text-white leading-[20px]">Overall Projects</p>
+              <p class="text-[28px] font-bold text-white leading-[34px]">124</p>
+            </div>
+            <app-layers-icon></app-layers-icon>
+          </div>
+          <!-- <div class="w-[350px] h-full rounded-xl bg-linear-to-r from-[#22C55E] to-[#10B981]"></div>
+          <div class="w-[350px] h-full rounded-xl bg-linear-to-r from-[#3B82F6] to-[#0EA5E9]"></div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
