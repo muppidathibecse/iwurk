@@ -10,8 +10,20 @@ import { layersIcon } from '../../../icons/admin-navigation-icons/layers-icon';
 
 @Component({
   selector: 'app-admindashboard',
-  imports: [Adminsidebar, menuIcon, searchIcon, notificationIcon, fullscreenIcon, downArrowIcon, layersIcon],
+  imports: [
+    Adminsidebar,
+    menuIcon,
+    searchIcon,
+    notificationIcon,
+    fullscreenIcon,
+    downArrowIcon,
+    layersIcon,
+  ],
   templateUrl: './admindashboard.html',
   styleUrl: './admindashboard.css',
 })
-export class Admindashboard {}
+export class Admindashboard {
+  dashboardDetails = [
+    { svg: '', title: '', value: '', colorFrom: '', colorTo: '' }
+  ];
+}
