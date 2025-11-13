@@ -74,9 +74,13 @@
         </div>
       </div>
       <div class="h-[491px] w-full mt-6">
-        <table class="w-full">
-          <thead class="bg-[#007AFF1A]">
+        <table class="w-full border border-[#E2E8F0CC] rounded-xl">
+          <thead class="bg-[#007AFF1A] ">
             <th class="text-[14px] text-[#64748B] py-3 font-medium text-start w-[242px]">
+              <input
+                type="checkbox"
+                class="w-4 h-4 border rounded-sm cursor-pointer accent-primary mx-5"
+              />
               User Name
             </th>
             <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Email</th>
@@ -88,25 +92,43 @@
             <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Action</th>
           </thead>
           <tbody>
-            <tr class="h-[73px] bg-amber-800">
+            <tr class="h-[73px]">
               <td class="">
-                <div class="h-full w-full bg-amber-300">
-                  <div>
-                    <img src="assets/admin/profile.png" alt="" />
+                <div class="h-full w-full flex items-center justify-start pl-5">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 border rounded-sm cursor-pointer accent-primary"
+                  />
+                  <div class="relative h-[46px] w-[46px] p-1 ml-2">
+                    <img src="assets/admin/profile.jpg" class="rounded-full" alt="" />
+                    <div
+                      class="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-white flex justify-center items-center"
+                    >
+                      <span class="h-2 w-2 rounded-full bg-[#4CAF50]"></span>
+                    </div>
                   </div>
 
-                  <div>
-                    <p>Rajeswari Kumari</p>
-                    <p>UI/UX Designer</p>
+                  <div class="ml-1">
+                    <p class="text-[14px] font-semibold text-[#0F172A]">Rajeswari Kumari</p>
+                    <p class="text-[14px] text-[#64748B]">UI/UX Designer</p>
                   </div>
                 </div>
               </td>
-              <td class="py-[26px]">rajeswari.kumari@gmail.com</td>
-              <td class="py-[26px]">Monika</td>
-              <td class="py-[26px]">SS00604</td>
-              <td class="py-[26px]">20/05/2025</td>
-              <td class="py-[26px]">Admin</td>
+              <td class="py-[26px] w-[200px] text-[14px] text-[#475569]">
+                rajeswari.kumari@gmail.com
+              </td>
+              <td class="py-[26px] text-[14px] text-[#475569]">Monika</td>
+              <td class="py-[26px] text-[14px] text-[#475569]">SS00604</td>
+              <td class="py-[26px] text-[14px] text-[#475569]">20/05/2025</td>
               <td class="py-[26px]"><p>Active</p></td>
+              <td class="py-[26px] text-[14px] text-[#475569]">
+                <p
+                  class="font-medium text-[#166534] bg-[#DCFCE7] px-[11px] py-[3px] w-[59px] rounded-2xl text-center"
+                >
+                  Active
+                </p>
+              </td>
+
               <td class="py-[26px]"><button>...</button></td>
             </tr>
           </tbody>
