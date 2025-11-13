@@ -1,5 +1,4 @@
 <main class="w-full h-full">
-  <!-- <img src="/assets/lock.png" class="h-6 w-6 ml-4" alt="Lock" /> -->
   <div class="flex flex-col gap-6 justify-center items-center mt-6">
     <div class="h-[133px] w-[248px] flex flex-col justify-center items-center gap-[30px]">
       <img src="/assets/logo.png" class="h-[37px] w-[135px] ml-4" alt="Lock" />
@@ -18,23 +17,23 @@
       </p>
       <div
         *ngFor="let item of adminSidebarItems"
-        class="h-[50px] w-full flex justify-start pl-3 items-center gap-3 mt-2 cursor-pointer hover:bg-primary-50 rounded-lg transition"
+        class="h-[50px] w-full flex justify-start pl-3 items-center gap-3 mt-2 cursor-pointer hover:bg-primary-50 rounded-lg transition text-gray-3"
+        [routerLink]="item.route"
+        routerLinkActive="text-primary"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         <ng-container [ngSwitch]="item.icon">
           <app-dashboard-icon *ngSwitchCase="'app-dashboard-icon'"></app-dashboard-icon>
-          <app-projects-icon
-            *ngSwitchCase="'app-projects-icon'"
-            class="text-gray-3"
-          ></app-projects-icon>
+          <app-projects-icon *ngSwitchCase="'app-projects-icon'"></app-projects-icon>
           <app-teams-icon *ngSwitchCase="'app-teams-icon'"></app-teams-icon>
           <app-users-icon *ngSwitchCase="'app-users-icon'"></app-users-icon>
           <app-activity-icon *ngSwitchCase="'app-activity-icon'"></app-activity-icon>
           <app-report-icon *ngSwitchCase="'app-report-icon'"></app-report-icon>
         </ng-container>
 
-        <a class="font-inter font-semibold text-[14px] leading-5 tracking-[-0.02em] text-gray-3">
+        <span class="font-inter font-semibold text-[14px] leading-5 tracking-[-0.02em]">
           {{ item.label }}
-        </a>
+        </span>
       </div>
     </div>
     <hr class="w-[248px] h-0.5 rounded-xs bg-[#6B728099] border-none" />
@@ -63,10 +62,10 @@
           {{ item.label }}
         </a>
       </div>
-      <div class="w-full h-[48px] flex justify-between items-center mt-[167px]">
+      <div class="w-full h-12 flex justify-between items-center mt-[167px]">
         <div class="w-[131px] flex">
-          <img src="/assets/admin/profile.png" class="h-[48px] w-[48px] rounded-full" alt="Lock" />
-          <div class="flex flex-col justify-between items-start ml-[12px] py-[4px]">
+          <img src="/assets/admin/profile.png" class="h-12 w-12 rounded-full" alt="Lock" />
+          <div class="flex flex-col justify-between items-start ml-3 py-1">
             <p class="text-[16px] text-white">Harshan</p>
             <p class="text-[12px] text-gray-3">UX Designer</p>
           </div>

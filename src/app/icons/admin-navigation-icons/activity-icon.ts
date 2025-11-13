@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M15.2667 10.0001C17.4333 10.0001 18.3333 9.16674 17.5333 6.4334C16.9917 4.59174 15.4083 3.0084 13.5667 2.46673C10.8333 1.66673 10 2.56673 10 4.7334V7.1334C10 9.16674 10.8333 10.0001 12.5 10.0001H15.2667Z"
-        stroke="#6B7280"
+        stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M16.6672 12.2499C15.8922 16.1082 12.1922 18.9082 7.98384 18.2249C4.82551 17.7166 2.28384 15.1749 1.76718 12.0166C1.09218 7.82489 3.87551 4.12489 7.71718 3.34155"
-        stroke="#6B7280"
+        stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"

@@ -1,0 +1,27 @@
+<main class="flex justify-center flex-col items-center px-3 mt-[30px]">
+  <div class="w-full h-[493px] flex flex-col justify-start items-center">
+    <img src="assets/logo/iwurklogo.png" class="w-[34px] h-[31px]" alt="" />
+    <button class="h-8 w-8 bg-primary text-white text-[16px] rounded-[120px] mt-[21px]">IT</button>
+    <div
+      class="w-[47px] flex flex-col items-center justify-center h-[407px] gap-2 border-b border-b-[#6B728099]"
+    >
+      <div
+        *ngFor="let item of adminDashboardSvg"
+        class="h-10 w-full flex justify-center items-center"
+      >
+        <img [src]="item.svg" alt="" />
+      </div>
+    </div>
+  </div>
+  <div class="w-[47px] flex flex-col items-center justify-start h-[300px] gap-2 mt-10">
+    <div class="h-10 w-full flex justify-center items-center">
+      <img src="assets/admin/icons/settings.svg" alt="" />
+    </div>
+    <div class="h-10 w-full flex justify-center items-center">
+      <img src="assets/admin/icons/download.svg" alt="" />
+    </div>
+  </div>
+  <div class="">
+    <img src="assets/admin/profile.png" class="rounded-full h-12 w-12" alt="">
+  </div>
+</main>

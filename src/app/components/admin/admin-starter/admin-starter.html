@@ -1,0 +1,50 @@
+<main class="flex h-screen w-screen overflow-hidden">
+  <div
+    class="bg-sidebar overflow-hidden transition-all duration-1200 ease-in-out"
+    [ngClass]="fullNavbar ? 'w-[300px]' : 'w-[90px]'"
+  >
+    <ng-container *ngIf="fullNavbar; else smallNav">
+      <app-adminsidebar></app-adminsidebar>
+    </ng-container>
+  </div>
+
+  <ng-template #smallNav>
+    <app-adminsmallsidebar></app-adminsmallsidebar>
+  </ng-template>
+
+  <div class="flex-3 w-full bg-[#F4F5FA] flex justify-start flex-col">
+    <div class="h-[70px] w-full flex items-center border-b border-b-[#000000]">
+      <div class="h-[50px] w-full flex items-center ml-4">
+        <app-menu-icon (click)="changeNavbar()"></app-menu-icon>
+        <div
+          class="w-[337px] h-[38px] flex justify-start items-center ml-6 border border-[#F0F0F0] rounded-xl"
+        >
+          <app-search-icon class="ml-3"></app-search-icon>
+          <input
+            type="text"
+            placeholder="Search"
+            class="outline-none focus:outline-none focus:ring-0 ml-4 text-[14px] leading-[100%] placeholder-[#8B8C93] font-inter font-normal"
+          />
+        </div>
+      </div>
+      <div class="w-[323px] h-[50px] flex items-center justify-s gap-6 mr-4">
+        <div class="h-[94px] flex justify-center items-center gap-6">
+          <app-notification-icon></app-notification-icon>
+          <app-fullscreen-icon></app-fullscreen-icon>
+        </div>
+        <div
+          class="h-full w-[174px] flex justify-center items-center gap-2.5 border-0.5 border-[#F0F0F0] rounded-xl"
+        >
+          <img src="assets/logo/companylogo.png" alt="" class="h-10 w-10" />
+          <button class="flex items-center justify-center text-[16px] text-black cursor-pointer">
+            Soft Suave
+            <app-down-arrow-icon class="ml-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="h-full w-full">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</main>
