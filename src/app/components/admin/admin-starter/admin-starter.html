@@ -1,4 +1,4 @@
-<main class="flex h-screen w-screen overflow-hidden">
+<main class="flex h-screen w-full overflow-hidden">
   <div
     class="bg-sidebar overflow-hidden transition-all duration-1200 ease-in-out"
     [ngClass]="fullNavbar ? 'w-[300px]' : 'w-[90px]'"
@@ -12,8 +12,8 @@
     <app-adminsmallsidebar></app-adminsmallsidebar>
   </ng-template>
 
-  <div class="flex-3 w-full bg-[#F4F5FA] flex justify-start flex-col">
-    <div class="h-[70px] w-full flex items-center border-b border-b-[#000000]">
+  <div class="flex-1 w-full bg-[#F4F5FA] flex flex-col">
+    <div class="h-[70px] flex w-full items-center border-b border-b-[#EFEDED]">
       <div class="h-[50px] w-full flex items-center ml-4">
         <app-menu-icon (click)="changeNavbar()"></app-menu-icon>
         <div
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="h-full w-full">
+    <div class="flex-1 overflow-auto w-full">
       <router-outlet></router-outlet>
     </div>
   </div>

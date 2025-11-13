@@ -1,1 +1,117 @@
-<p>admin-users works!</p>
+<main class="bg-[#F4F5FA]">
+  <div class="flex p-4 flex-col">
+    <div class="h-[100px] w-full flex gap-4">
+      <div
+        *ngFor="let item of usersDashboardItems"
+        class="h-full flex-1 bg-white rounded-xl border border-[#dddddd] flex justify-between items-center p-4"
+      >
+        <div>
+          <p class="text-[14px]">{{ item.title }}</p>
+          <p class="text-[20px] font-semibold">200</p>
+        </div>
+
+        <div class="w-12 h-12 bg-[#F4F5FA] flex justify-center items-center rounded-lg">
+          <img [src]="item.icon" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="h-[814px] w-full mt-6">
+      <div class="h-[83px] w-full flex justify-between items-center px-6">
+        <p class="text-[18px] leading-7 text-[#101828] font-semibold">Users</p>
+        <div class="flex gap-4">
+          <button
+            class="flex justify-center items-center h-11 w-[99px] border border-[#E5E5E5] text-[14px] rounded-lg"
+          >
+            <img src="assets/admin/users/export.svg" class="h-5 w-5 mr-2" alt="" />Export
+          </button>
+          <button
+            class="flex justify-center items-center h-11 w-[151px] bg-primary text-white border border-[#E5E5E5] text-[16px] rounded-lg"
+          >
+            <img src="assets/admin/users/add.svg" class="h-6 w-6 mr-2" alt="" />Invite User
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-start items-center gap-3">
+        <div
+          class="w-100 h-11 flex justify-start items-center ml-6 border border-[#D0D5DD] rounded-lg"
+        >
+          <app-search-icon class="ml-3"></app-search-icon>
+          <input
+            type="text"
+            placeholder="Search"
+            class="outline-none focus:outline-none focus:ring-0 ml-4 text-[14px] leading-[100%] placeholder-[#8B8C93] font-inter font-normal"
+          />
+        </div>
+        <button
+          class="w-[102px] h-11 flex justify-center items-center gap-4 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280]"
+        >
+          <app-filter-icon></app-filter-icon>
+          Status
+        </button>
+        <button
+          class="w-[90px] h-11 flex justify-center items-center gap-4 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280]"
+        >
+          <app-date-icon></app-date-icon>
+          Date
+        </button>
+      </div>
+      <div
+        class="h-[55px] w-full border-b border-b-[#CACACA] flex justify-start items-center gap-5 mt-2"
+      >
+        <div
+          class="ml-4 h-full w-[66px] border-b border-b-primary flex justify-center items-center cursor-pointer"
+        >
+          <p class="text-primary text-[16px] font-semibold">Users</p>
+        </div>
+        <div class="flex justify-between items-center gap-2 cursor-pointer">
+          <p class="text-vlack text-[16px]">Pending Invites</p>
+          <p
+            class="h-6 w-6 rounded-full bg-[#007AFF1A] text-primary text-[12px] flex justify-center items-center"
+          >
+            5
+          </p>
+        </div>
+      </div>
+      <div class="h-[491px] w-full mt-6">
+        <table class="w-full">
+          <thead class="bg-[#007AFF1A]">
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start w-[242px]">
+              User Name
+            </th>
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Email</th>
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Team</th>
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">ID</th>
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Joined Date</th>
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Role</th>
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Status</th>
+            <th class="text-[14px] text-[#64748B] py-3 font-medium text-start">Action</th>
+          </thead>
+          <tbody>
+            <tr class="h-[73px] bg-amber-800">
+              <td class="">
+                <div class="h-full w-full bg-amber-300">
+                  <div>
+                    <img src="assets/admin/profile.png" alt="" />
+                  </div>
+
+                  <div>
+                    <p>Rajeswari Kumari</p>
+                    <p>UI/UX Designer</p>
+                  </div>
+                </div>
+              </td>
+              <td class="py-[26px]">rajeswari.kumari@gmail.com</td>
+              <td class="py-[26px]">Monika</td>
+              <td class="py-[26px]">SS00604</td>
+              <td class="py-[26px]">20/05/2025</td>
+              <td class="py-[26px]">Admin</td>
+              <td class="py-[26px]"><p>Active</p></td>
+              <td class="py-[26px]"><button>...</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
