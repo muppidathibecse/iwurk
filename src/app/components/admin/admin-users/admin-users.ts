@@ -4,10 +4,11 @@ import { searchIcon } from '../../../icons/admin-navigation-icons/search-icon';
 import { filterIcon } from '../../../icons/filter';
 import { dateIcon } from '../../../icons/date';
 import { DateFilter } from '../date-filter/date-filter';
+import { EditUser } from '../edit-user/edit-user';
 
 @Component({
   selector: 'app-admin-users',
-  imports: [CommonModule, searchIcon, filterIcon, dateIcon, DateFilter],
+  imports: [CommonModule, EditUser, searchIcon, filterIcon, dateIcon, DateFilter],
   templateUrl: './admin-users.html',
   styleUrl: './admin-users.css',
 })
@@ -52,5 +53,13 @@ export class AdminUsers {
   toggleMenu() {
     this.isOpen = !this.isOpen;
   }
-  
+  profilePopupOpen = false;
+
+  openProfilePopup() {
+    this.profilePopupOpen = true;
+  }
+
+  closeProfilePopup() {
+    this.profilePopupOpen = false;
+  }
 }
