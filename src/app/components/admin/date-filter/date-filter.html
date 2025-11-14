@@ -1,0 +1,105 @@
+<div
+  class="absolute z-40 mt-2 left-0 w-[213px] h-80 rounded-xl shadow-lg p-4 flex flex-col bg-white justify-between items-center gap-2"
+>
+  <!-- Label -->
+  <div class="h-14 w-44 flex flex-col justify-between">
+    <p class="text-[12px] text-black font-medium">Date</p>
+    <input
+      class="w-full h-8 px-3 py-1.5 rounded-full border border-gray-400 text-sm"
+      readonly
+      [value]="tempDate ? formatDate(tempDate) : ''"
+    />
+  </div>
+
+  <!-- Input -->
+
+  <!-- Calendar Section (same frame) -->
+  <div class="w-[182px] h-[190px] flex flex-col justify-center items-center rounded-lg p-3">
+    <!-- Month Navigation -->
+    <div class="h-[22px] flex items-center justify-between">
+      <button (click)="prevMonth()" class="p-1 rounded hover:bg-gray-100" type="button">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+
+      <div class="font-semibold text-[12px] text-gray-800">
+        {{ monthLabel }}
+      </div>
+
+      <button (click)="nextMonth()" class="p-1 rounded hover:bg-gray-100" type="button">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Weekdays -->
+    <!-- container width 165px -->
+    <div class="w-[165px] mt-2">
+      <table class="w-full table-fixed text-center">
+        <!-- Weekday header (1st row) -->
+        <thead>
+          <tr class="text-[10px] font-semibold text-gray-500">
+            <th class="w-[23px]">Su</th>
+            <th class="w-[23px]">Mo</th>
+            <th class="w-[23px]">Tu</th>
+            <th class="w-[23px]">We</th>
+            <th class="w-[23px]">Th</th>
+            <th class="w-[23px]">Fr</th>
+            <th class="w-[23px]">Sa</th>
+          </tr>
+        </thead>
+
+        <!-- Dates (6 rows x 7 cols) -->
+        <tbody>
+          <tr *ngFor="let row of weeks; let r = index">
+            <td *ngFor="let cell of row; let c = index" class="p-0">
+              <!-- empty placeholder when cell is null -->
+              <ng-container *ngIf="cell; else emptyCell">
+                <button
+                  class="w-[23px] h-[23px] flex items-center justify-center rounded-md text-[9px] transition"
+                  (click)="onSelectDay(cell)"
+                  [ngClass]="{
+                    'text-gray-300': !cell.inMonth,
+                    'text-gray-700': cell.inMonth && !cell.isSelected,
+                    'bg-[#3184ff] text-white': cell.isSelected,
+                    'ring-2 ring-[#cfe0ff]': cell.isToday && !cell.isSelected
+                  }"
+                  type="button"
+                  [title]="cell.date | date : 'fullDate'"
+                >
+                  {{ cell.label }}
+                </button>
+              </ng-container>
+
+              <ng-template #emptyCell>
+                <div class="w-[23px] h-[23px]"></div>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="w-[145px] h-6 flex justify-between items-center">
+    <button
+      (click)="onCancel()"
+      class="w-[72px] h-5 text-[#4F4F4F] font-medium text-[12px] bg-[#e9e9e9] rounded-lg cursor-pointer flex items-center justify-center"
+    >
+      Cancel
+    </button>
+
+    <button
+      (click)="onApply()"
+      class="w-[65px] h-5 bg-primary text-white font-medium text-[12px] rounded-lg cursor-pointer flex items-center justify-center"
+    >
+      Apply
+    </button>
+  </div>
+</div>

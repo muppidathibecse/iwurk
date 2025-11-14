@@ -1,4 +1,4 @@
-<main class="bg-[#F4F5FA]">
+<main class="bg-[#F4F5FA] relative">
   <div class="flex p-4 flex-col">
     <div class="h-[100px] w-full flex gap-4">
       <div
@@ -43,18 +43,56 @@
             class="outline-none focus:outline-none focus:ring-0 ml-4 text-[14px] leading-[100%] placeholder-[#8B8C93] font-inter font-normal"
           />
         </div>
-        <button
-          class="w-[102px] h-11 flex justify-center items-center gap-4 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280]"
-        >
-          <app-filter-icon></app-filter-icon>
-          Status
-        </button>
-        <button
-          class="w-[90px] h-11 flex justify-center items-center gap-4 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280]"
-        >
-          <app-date-icon></app-date-icon>
-          Date
-        </button>
+        <div class="flex flex-col relative">
+          <button
+            (click)="togglePopup()"
+            class="w-[112px] relative h-11 flex justify-center items-center gap-2 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280] cursor-pointer"
+          >
+            <app-filter-icon></app-filter-icon>
+            {{ selectedItem }}
+          </button>
+
+          <div
+            *ngIf="showPopup"
+            class="absolute top-12 left-0 w-40 h-52 border bg-white border-[#F0F0F0] rounded-lg flex flex-col items-start justify-start"
+          >
+            <div class="flex flex-col h-full w-full">
+              <p class="font-semibold text-[12px] text-black px-2 py-2">Filter by Status</p>
+              <div class="flex flex-col justify-start items-start">
+                <p
+                  *ngFor="let key of filterItems"
+                  (click)="selectItem(key)"
+                  class="text-[12px] px-2 py-2 cursor-pointer"
+                  [ngClass]="{
+                    'font-semibold text-black': selectedItem === key,
+                    'font-normal text-gray-700': selectedItem !== key
+                  }"
+                >
+                  {{ key }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button
+            (click)="toggleDateFilter()"
+            class="w-[90px] h-11 flex justify-center items-center gap-4 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280] cursor-pointer"
+          >
+            <app-date-icon></app-date-icon>
+            Date
+          </button>
+
+          <!-- Date Filter Dropdown -->
+          <app-date-filter
+            *ngIf="showDateFilter"
+            (apply)="onApply($event)"
+            (cancel)="onCancel()"
+            class="absolute left-0 mt-2"
+          >
+          </app-date-filter>
+        </div>
       </div>
       <div
         class="h-[55px] w-full border-b border-b-[#CACACA] flex justify-start items-center gap-5 mt-2"
@@ -97,7 +135,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="h-[73px]">
+              <tr class="h-[73px] relative overflow-visible">
                 <td class="">
                   <div class="h-full w-full flex items-center justify-start pl-5">
                     <input
@@ -134,88 +172,42 @@
                   </span>
                 </td>
 
-                <td class="py-[26px]"><button>...</button></td>
-              </tr>
-              <tr class="h-[73px]">
-                <td class="">
-                  <div class="h-full w-full flex items-center justify-start pl-5">
-                    <input
-                      type="checkbox"
-                      class="w-4 h-4 border rounded-sm cursor-pointer accent-primary"
-                    />
-                    <div class="relative h-[46px] w-[46px] p-1 ml-2">
-                      <img src="assets/admin/profile.jpg" class="rounded-full" alt="" />
-                      <div
-                        class="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-white flex justify-center items-center"
-                      >
-                        <span class="h-2 w-2 rounded-full bg-[#4CAF50]"></span>
-                      </div>
-                    </div>
-
-                    <div class="ml-1">
-                      <p class="text-[14px] font-semibold text-[#0F172A]">Rajeswari Kumari</p>
-                      <p class="text-[14px] text-[#64748B]">UI/UX Designer</p>
-                    </div>
-                  </div>
+                <td class="py-[26px]">
+                  <button (click)="isOpen = !isOpen" class="cursor-pointer">...</button>
                 </td>
-                <td class="py-[26px] w-[200px] text-[14px] text-[#475569]">
-                  rajeswari.kumari@gmail.com
-                </td>
-                <td class="py-[26px] text-[14px] text-[#475569]">Monika</td>
-                <td class="py-[26px] text-[14px] text-[#475569]">SS00604</td>
-                <td class="py-[26px] text-[14px] text-[#475569]">20/05/2025</td>
-                <td class="py-[26px]"><p>Active</p></td>
-                <td class="py-[26px] text-[14px] text-[#475569]">
-                  <span
-                    class="font-medium text-[#B10000] bg-[#B100001A] px-[11px] py-[3px] rounded-2xl text-center"
-                  >
-                    Inactive
-                  </span>
-                </td>
-
-                <td class="py-[26px]"><button>...</button></td>
-              </tr>
-              <tr class="h-[73px]">
-                <td class="">
-                  <div class="h-full w-full flex items-center justify-start pl-5">
-                    <input
-                      type="checkbox"
-                      class="w-4 h-4 border rounded-sm cursor-pointer accent-primary"
-                    />
-                    <div class="relative h-[46px] w-[46px] p-1 ml-2">
-                      <img src="assets/admin/profile.jpg" class="rounded-full" alt="" />
-                      <div
-                        class="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-white flex justify-center items-center"
-                      >
-                        <span class="h-2 w-2 rounded-full bg-[#4CAF50]"></span>
-                      </div>
-                    </div>
-
-                    <div class="ml-1">
-                      <p class="text-[14px] font-semibold text-[#0F172A]">Rajeswari Kumari</p>
-                      <p class="text-[14px] text-[#64748B]">UI/UX Designer</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="py-[26px] w-[200px] text-[14px] text-[#475569]">
-                  rajeswari.kumari@gmail.com
-                </td>
-                <td class="py-[26px] text-[14px] text-[#475569]">Monika</td>
-                <td class="py-[26px] text-[14px] text-[#475569]">SS00604</td>
-                <td class="py-[26px] text-[14px] text-[#475569]">20/05/2025</td>
-                <td class="py-[26px]"><p>Active</p></td>
-                <td class="py-[26px] text-[14px] text-[#475569]">
-                  <span
-                    class="font-medium text-[#FF6200] bg-[#FF62001A] px-[11px] py-[3px] rounded-2xl text-center"
-                  >
-                    Suspended
-                  </span>
-                </td>
-
-                <td class="py-[26px]"><button>...</button></td>
               </tr>
             </tbody>
           </table>
+          <!-- Overlay -->
+          <div
+            *ngIf="isOpen"
+            (click)="isOpen = !isOpen"
+            class="absolute inset-0 bg-[#00000052] flex items-center justify-center"
+          >
+            <!-- Centered Menu -->
+            <div
+              class="bg-white shadow-lg rounded-lg border w-[140px] h-[135px] flex flex-col justify-center items-center gap-1.5"
+            >
+              <div
+                class="h-8 w-full hover:bg-[#F4F5FA] cursor-pointer flex justify-start items-center"
+              >
+                <img src="assets/admin/users/profile.svg" class="h-6 w-6 ml-2" alt="" />
+                <p class="text-[14px] text-black font-medium">View Profile</p>
+              </div>
+              <div
+                class="h-8 w-full hover:bg-[#F4F5FA] cursor-pointer flex justify-start items-center"
+              >
+                <img src="assets/admin/users/edit.svg" class="h-6 w-6 ml-2" alt="" />
+                <p class="text-[14px] text-black font-medium">Edit</p>
+              </div>
+              <div
+                class="h-8 w-full hover:bg-[#F4F5FA] cursor-pointer flex justify-start items-center"
+              >
+                <img src="assets/admin/users/delete.svg" class="h-6 w-6 ml-2" alt="" />
+                <p class="text-[14px] text-black font-medium">Delete</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
