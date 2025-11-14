@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { usersIcon } from '../../../icons/admin-navigation-icons/users-icon';
 import { CommonModule } from '@angular/common';
 import { searchIcon } from '../../../icons/admin-navigation-icons/search-icon';
 import { filterIcon } from '../../../icons/filter';
@@ -7,7 +6,7 @@ import { dateIcon } from '../../../icons/date';
 
 @Component({
   selector: 'app-admin-users',
-  imports: [usersIcon, CommonModule, searchIcon, filterIcon, dateIcon],
+  imports: [CommonModule, searchIcon, filterIcon, dateIcon],
   templateUrl: './admin-users.html',
   styleUrl: './admin-users.css',
 })
