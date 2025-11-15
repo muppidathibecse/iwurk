@@ -45,7 +45,7 @@
         </div>
         <div class="flex flex-col relative">
           <button
-            (click)="togglePopup()"
+            (click)="toggleMenu('Status')"
             class="w-28 relative h-11 flex justify-center items-center gap-2 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280] cursor-pointer"
           >
             <app-filter-icon></app-filter-icon>
@@ -77,14 +77,13 @@
 
         <div class="relative">
           <button
-            (click)="toggleDateFilter()"
+            (click)="toggleMenu('Date')"
             class="w-[90px] h-11 flex justify-center items-center gap-4 border border-[#D0D5DD] rounded-lg text-[14px] text-[#6B7280] cursor-pointer"
           >
             <app-date-icon></app-date-icon>
             Date
           </button>
 
-         
           <app-date-filter
             *ngIf="showDateFilter"
             (apply)="onApply($event)"
@@ -135,7 +134,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="h-[73px] relative overflow-visible">
+              <tr class="h-[73px] overflow-visible">     
                 <td class="">
                   <div class="h-full w-full flex items-center justify-start pl-5">
                     <input
@@ -178,13 +177,12 @@
               </tr>
             </tbody>
           </table>
-        
+
           <div
             *ngIf="isOpen"
             (click)="isOpen = !isOpen"
             class="absolute inset-0 bg-[#00000052] flex items-center justify-end right-2"
           >
-            
             <div
               class="bg-white shadow-lg rounded-lg w-[140px] h-[135px] flex flex-col justify-center items-center gap-1.5"
             >
@@ -218,7 +216,7 @@
   <div
     *ngIf="profilePopupOpen"
     class="absolute inset-0 bg-[#0000004a] backdrop-blur-sm flex items-center justify-center cursor-pointer"
-    (click)="closeProfilePopup()"
+    
   >
     <div class="bg-white rounded-xl shadow-lg w-lg h-[740px] flex gap-6 flex-col">
       <div class="h-[77px] w-full flex justify-between items-center p-6">

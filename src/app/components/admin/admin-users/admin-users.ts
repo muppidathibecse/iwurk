@@ -21,11 +21,7 @@ export class AdminUsers {
   ];
 
   filterItems: string[] = ['All', 'Active', 'Inactive', 'Pending', 'Suspended'];
-  showPopup = false;
 
-  togglePopup() {
-    this.showPopup = !this.showPopup;
-  }
   selectedItem: string = 'Status';
 
   selectItem(key: string) {
@@ -34,7 +30,11 @@ export class AdminUsers {
   }
 
   showDateFilter = false;
+  showPopup = false;
 
+  togglePopup() {
+    this.showPopup = !this.showPopup;
+  }
   toggleDateFilter() {
     this.showDateFilter = !this.showDateFilter;
   }
@@ -50,8 +50,14 @@ export class AdminUsers {
 
   isOpen = false;
 
-  toggleMenu() {
-    this.isOpen = !this.isOpen;
+  toggleMenu(menuName: string) {
+    if (menuName === 'Date') {
+      this.showPopup = false;
+      this.showDateFilter = !this.showDateFilter;
+    } else {
+      this.showPopup = !this.showPopup;
+      this.showDateFilter = false;
+    }
   }
   profilePopupOpen = false;
 

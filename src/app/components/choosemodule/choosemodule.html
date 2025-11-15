@@ -35,7 +35,7 @@
             [src]="module.colorImgSrc"
             alt="Onsite Module Selected"
             class="h-[174px] w-[205px]"
-            *ngIf="selected === module.name"
+            *ngIf="selected !=module.name"
           />
 
           <p class="text-black font-semibold text-[20px] mt-2">{{ module.name }}</p>
