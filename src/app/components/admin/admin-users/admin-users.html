@@ -28,7 +28,7 @@
           <button
             class="flex justify-center items-center h-11 w-[151px] bg-primary text-white border border-[#E5E5E5] text-[16px] rounded-lg"
           >
-            <img src="assets/admin/users/add.svg" class="h-6 w-6 mr-2" alt="" />Invite User
+            <img src="assets/admin/users/add.svg" class="h-6 w-6 mr-2" alt="" />Add User
           </button>
         </div>
       </div>
@@ -96,19 +96,26 @@
       <div
         class="h-[55px] w-full border-b border-b-[#CACACA] flex justify-start items-center gap-5 mt-2"
       >
-        <div
-          class="ml-4 h-full w-[66px] border-b border-b-primary flex justify-center items-center cursor-pointer"
-        >
-          <p class="text-primary text-[16px] font-semibold">Users</p>
-        </div>
-        <div class="flex justify-between items-center gap-2 cursor-pointer">
-          <p class="text-vlack text-[16px]">Pending Invites</p>
-          <p
-            class="h-6 w-6 rounded-full bg-[#007AFF1A] text-primary text-[12px] flex justify-center items-center"
+        <div class="flex flex-row gap-4">
+          <div
+            class="ml-4 h-full w-[66px] border-b border-b-primary flex justify-center items-center cursor-pointer"
           >
-            5
-          </p>
+            <p class="text-primary text-[16px] font-semibold">Users</p>
+          </div>
+          <div class="flex justify-between items-center gap-2 cursor-pointer">
+            <p class="text-vlack text-[16px]">Pending Invites</p>
+            <p
+              class="h-6 w-6 rounded-full bg-[#007AFF1A] text-primary text-[12px] flex justify-center items-center"
+            >
+              5
+            </p>
+          </div>
         </div>
+        <button
+          class="flex justify-center items-center h-11 w-[151px] text-whiteborder border border-[#E5E5E5] text-[14px] rounded-lg"
+        >
+          <img src="assets/admin/users/addblack.svg" class="h-6 w-6 mr-2" alt="" />Invite User
+        </button>
       </div>
       <div class="h-[491px] w-full mt-6">
         <div
@@ -134,7 +141,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="h-[73px] overflow-visible">     
+              <tr class="h-[73px] overflow-visible">
                 <td class="">
                   <div class="h-full w-full flex items-center justify-start pl-5">
                     <input
@@ -216,7 +223,6 @@
   <div
     *ngIf="profilePopupOpen"
     class="absolute inset-0 bg-[#0000004a] backdrop-blur-sm flex items-center justify-center cursor-pointer"
-    
   >
     <div class="bg-white rounded-xl shadow-lg w-lg h-[740px] flex gap-6 flex-col">
       <div class="h-[77px] w-full flex justify-between items-center p-6">
