@@ -96,27 +96,21 @@
       <div
         class="h-[55px] w-full border-b border-b-[#CACACA] flex justify-start items-center gap-5 mt-2"
       >
-        <div class="flex flex-row gap-4">
-          <div
-            class="ml-4 h-full w-[66px] border-b border-b-primary flex justify-center items-center cursor-pointer"
-          >
-            <p class="text-primary text-[16px] font-semibold">Users</p>
-          </div>
-          <div class="flex justify-between items-center gap-2 cursor-pointer">
-            <p class="text-vlack text-[16px]">Pending Invites</p>
-            <p
-              class="h-6 w-6 rounded-full bg-[#007AFF1A] text-primary text-[12px] flex justify-center items-center"
-            >
-              5
-            </p>
-          </div>
-        </div>
-        <button
-          class="flex justify-center items-center h-11 w-[151px] text-whiteborder border border-[#E5E5E5] text-[14px] rounded-lg"
+        <div
+          class="ml-4 h-full w-[66px] border-b border-b-primary flex justify-center items-center cursor-pointer"
         >
-          <img src="assets/admin/users/addblack.svg" class="h-6 w-6 mr-2" alt="" />Invite User
-        </button>
+          <p class="text-primary text-[16px] font-semibold">Users</p>
+        </div>
+        <div class="flex justify-between items-center gap-2 cursor-pointer">
+          <p class="text-vlack text-[16px]">Pending Invites</p>
+          <p
+            class="h-6 w-6 rounded-full bg-[#007AFF1A] text-primary text-[12px] flex justify-center items-center"
+          >
+            5
+          </p>
+        </div>
       </div>
+
       <div class="h-[491px] w-full mt-6">
         <div
           class="rounded-xl overflow-hidden border border-[#E2E8F0]/80 shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
@@ -141,7 +135,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="h-[73px] overflow-visible">
+              <tr class="h-[73px] overflow-visible">     
                 <td class="">
                   <div class="h-full w-full flex items-center justify-start pl-5">
                     <input
@@ -153,28 +147,41 @@
                       <div
                         class="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-white flex justify-center items-center"
                       >
-                        <span class="h-2 w-2 rounded-full bg-[#4CAF50]"></span>
+                        <span
+                          class="h-2 w-2 rounded-full"
+                          [ngClass]="{
+                            'bg-[#4CAF50]': key.workingStatus,
+                            'bg-[#6B7280]': !key.workingStatus
+                          }"
+                        ></span>
                       </div>
                     </div>
 
                     <div class="ml-1">
-                      <p class="text-[14px] font-semibold text-[#0F172A]">Rajeswari Kumari</p>
-                      <p class="text-[14px] text-[#64748B]">UI/UX Designer</p>
+                      <p class="text-[14px] font-semibold text-[#0F172A]">{{ key.name }}</p>
+                      <p class="text-[14px] text-[#64748B]">{{ key.userTechnology }}</p>
                     </div>
                   </div>
                 </td>
                 <td class="py-[26px] w-[200px] text-[14px] text-[#475569]">
-                  rajeswari.kumari@gmail.com
+                  {{ key.email }}
                 </td>
-                <td class="py-[26px] text-[14px] text-[#475569]">Monika</td>
-                <td class="py-[26px] text-[14px] text-[#475569]">SS00604</td>
-                <td class="py-[26px] text-[14px] text-[#475569]">20/05/2025</td>
-                <td class="py-[26px]"><p>Active</p></td>
-                <td class="py-[26px] text-[14px] text-[#475569]">
+                <td class="py-[26px] text-[14px] text-[#475569]">{{ key.teamName }}</td>
+                <td class="py-[26px] text-[14px] text-[#475569]">{{ key.userId }}</td>
+                <td class="py-[26px] text-[14px] text-[#475569]">{{ key.joinedDate }}</td>
+                <td class="py-[26px]">
+                  <p>{{ key.role }}</p>
+                </td>
+                <td class="py-[26px] text-[14px]">
                   <span
-                    class="font-medium text-[#166534] bg-[#DCFCE7] px-[11px] py-[3px] rounded-2xl text-center"
+                    class="font-medium px-[11px] py-[3px] rounded-2xl text-center"
+                    [ngClass]="{
+                      'text-[#B10000] bg-[#B100001A]': key.status === 'Inactive',
+                      'text-[#166534] bg-[#DCFCE7]': key.status === 'Active',
+                      'text-[#FF6200] bg-[#FF62001A]': key.status === 'Suspended'
+                    }"
                   >
-                    Active
+                    {{ key.status }}
                   </span>
                 </td>
 
